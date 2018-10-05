@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>DWD278 - Week 1 - Example 3</title>
+        <script src="jquery_3.3.1.min.js" type="text/javascript"></script>
+        <style>
+            #output {
+                min-width: 600px; 
+                min-height: 100px; 
+                padding: 15px;
+                margin: 15px 0;
+                background-color:thistle;
+                color: #fff;
+                font-weight: bold;
+                font-size: 2em;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Example 3 - Basic Async Data Transfer</h1>
+
+        <button id="btnShowMessage">Show Message</button>
+
+        <div id="output">
+            <!-- This is an empty div element -->
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                alert("Hello");
+
+                var url = "json_github.json";
+
+                $("#btnShowMessage").click(function(){
+                   // AJAX call to get data from a JSON file:
+                    $.getJSON(
+                        url)
+                        .done(function (data) {
+                            $.each(data.items, function (i, item) {
+                                $("#output").append(data);
+                                $("#output").append(data.item.login);
+                                $("#output").append(data.item.html_url);
+                                $("<img>").attr("src", item.avatar_url).appendTo("#images");
+                            });
+                        });
+                });
+                });
+            });
+        </script>
+    </body>
+</html>

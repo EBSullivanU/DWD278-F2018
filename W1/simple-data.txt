@@ -1,0 +1,1 @@
+This is some plain text that will be requested via an AJAX call and will be returned for display on the calling page.
